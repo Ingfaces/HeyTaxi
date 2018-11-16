@@ -1,14 +1,34 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title  align="center">HeyTaxi</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+      <button block ion-button (click)="cerrar()" >Cerrar SESIÓN</button>
+      <button block ion-button (click)="registar()" >Registrar</button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+ <div padding>
+  <button block ion-button (click)="cerrar()" >Cerrar SESIÓN</button>
+ </div> 
 </ion-content>
