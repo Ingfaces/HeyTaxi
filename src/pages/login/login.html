@@ -1,0 +1,38 @@
+<ion-content padding>
+	 <ion-buttons end>
+      <button ion-button icon-only button (click)="irregistar()" >
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+	<form [formGroup]="loginform" class="form" (ngSubmit)="onSubmit(loginform.value)" >
+	    <!-- INICIO  del campo email -->
+	    <ion-item>
+	      <ion-label floating color="primary">Email</ion-label>
+	      <ion-input type="email" class="texto" formControlName="email"></ion-input>
+	    </ion-item>
+	    <div *ngIf="formErrors.email">
+	      <div *ngFor="let errors of formErrors.email" >
+	        <p class="alert">{{ errors }}<p>
+	      </div> 
+	    </div>
+	    <!-- FIN  del campo email -->
+	    <!-- INICIO  del campo password -->
+	    <ion-item>
+	      <ion-label floating color="primary" >Contraseña</ion-label>
+	      <ion-input type="{{type}}"  class="texto" formControlName="contra" validateEqual="confirmPassword" reverse="true"></ion-input>
+	      <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-off-outline"></ion-icon></button>
+          <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-outline"></ion-icon></button>
+
+	    </ion-item>
+	    <div *ngIf="formErrors.contra">
+	      <div *ngFor="let errors of formErrors.contra" >
+	        <p class="alert">{{ errors }}<p>
+	      </div>
+	    </div>
+	    <div align="center" >
+	    	<button class="boton_1" ion-button type="submit" >Ingresar</button>
+	    </div>
+	    <!-- Botón que envía datos del formulario --> 
+	</form>
+</ion-content>
