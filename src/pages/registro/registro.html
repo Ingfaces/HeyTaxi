@@ -1,0 +1,37 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form [formGroup]="datos" (ngSubmit)="registrar()">
+        <ion-list>
+            <ion-item>
+                <ion-icon name="person" item-start></ion-icon>
+                <ion-label stacked>Nombres:</ion-label>
+                <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+            </ion-item>
+            <ion-item text-center>
+                <button ion-button type="button" icon-left large (click)="abrirGaleria()">
+                    <ion-icon name="images"></ion-icon>
+                        Añadir fotos
+                </button>
+            </ion-item>
+        </ion-list>
+        <div id="LoadedImages" *ngIf="fotos">
+            <ion-item *ngFor="let item of fotos; let i = index">
+                <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
+                <img [src]="item" class="iiimagenes">
+            </ion-item>
+        </div>
+
+        <div padding>
+            <button ion-button block type="submit" [disabled]="!datos.valid">Guardar</button>
+        </div>
+    </form>
+</ion-content>
