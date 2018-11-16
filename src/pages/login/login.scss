@@ -1,0 +1,35 @@
+page-login {
+
+  .term
+  {
+    padding-top: 20px;
+  }
+
+  .terms-checkbox-label
+  {
+    overflow: visible;
+    text-overflow: initial;
+    white-space: initial;
+    opacity: 0.5;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .alert
+  {
+    color: red;
+  }
+
+  .boton_1
+  {
+  aling:center;
+    color: #000000;
+    background-color: #ff6600;
+    border-radius: 15px;
+   }
+  .boton_1:hover{
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+}
