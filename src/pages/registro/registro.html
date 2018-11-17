@@ -1,37 +1,103 @@
 
 <ion-header>
-
   <ion-navbar>
-    <ion-title>registro</ion-title>
+    <ion-title>Registro de Usuario</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-<form [formGroup]="datos" (ngSubmit)="registrar()">
-        <ion-list>
-            <ion-item>
-                <ion-icon name="person" item-start></ion-icon>
-                <ion-label stacked>Nombres:</ion-label>
-                <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
-            </ion-item>
-            <ion-item text-center>
-                <button ion-button type="button" icon-left large (click)="abrirGaleria()">
-                    <ion-icon name="images"></ion-icon>
-                        Añadir fotos
-                </button>
-            </ion-item>
-        </ion-list>
-        <div id="LoadedImages" *ngIf="fotos">
-            <ion-item *ngFor="let item of fotos; let i = index">
-                <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
-                <img [src]="item" class="iiimagenes">
-            </ion-item>
-        </div>
 
-        <div padding>
-            <button ion-button block type="submit" [disabled]="!datos.valid">Guardar</button>
+<form [formGroup]="datos" class="form" (ngSubmit)="registrar()">
+<!-- INICIO del campo nombres -->
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Nombres</ion-label>
+        <ion-input type="text" formControlName="nombres" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.nombres">
+        <div *ngFor="let errors of formErrors.nombres" >
+            <p class="alert">{{ errors }}<p>
         </div>
-    </form>
+    </div>
+    <!-- FIN  del campo nombres -->
+<!-- INICIO del campo apellidos -->
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Apellidos</ion-label>
+        <ion-input type="text" formControlName="apellidos" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.apellidos">
+        <div *ngFor="let errors of formErrors.apellidos" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo apellidos -->
+<!-- INICIO del campo username -->
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Nick</ion-label>
+        <ion-input type="text" formControlName="username" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.username">
+        <div *ngFor="let errors of formErrors.username" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo username -->
+
+    <!-- INICIO  del campo email -->
+    <ion-item>
+        <ion-icon name="mail" item-start></ion-icon>
+        <ion-label floating color="primary" >Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.email">
+        <div *ngFor="let errors of formErrors.email" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo email -->
+
+    <!-- INICIO  del campo password -->
+    <ion-item>
+        <ion-icon name="eye" item-start></ion-icon>
+        <ion-label floating color="primary" >Contraseña</ion-label>
+        <ion-input type="password" formControlName="password" validateEqual="confirmPassword" reverse="true"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.password">
+        <div *ngFor="let errors of formErrors.password" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo password -->
+
+    <!-- INICIO del campo confirmPassword -->
+    <ion-item>
+        <ion-icon name="eye" item-start></ion-icon>
+        <ion-label floating color="primary" >Confirmar Contraseña </ion-label>
+        <ion-input type="password" formControlName="confirmPassword" validateEqual="password" reverse="false" equalTo="password"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.confirmPassword">
+        <div *ngFor="let errors of formErrors.confirmPassword" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN del campo confirmPassword -->
+    <ion-item text-center>
+        <button ion-button type="button" icon-left large (click)="abrirGaleria()">
+            <ion-icon name="images"></ion-icon>
+                Añadir fotos
+        </button>
+    </ion-item>
+    <div id="LoadedImages" *ngIf="fotos">
+        <ion-item *ngFor="let item of fotos; let i = index">
+            <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
+            <img [src]="item" class="imagenes">
+        </ion-item>
+    </div>
+
+    <div padding>
+        <button ion-button block type="submit" [disabled]="!datos.valid">Guardar</button>
+    </div>
+</form>
+
 </ion-content>
