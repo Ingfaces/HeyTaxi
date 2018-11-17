@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule} from '@angular/common/http';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; 
+import { EqualValidator } from '../validators';
 
 
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -19,13 +20,16 @@ import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
 import { CargarImgProvider } from '../providers/cargar-img/cargar-img';
 import { ServiceProvider } from '../providers/service/service';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    RegistroPage
+    RegistroPage,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { ServiceProvider } from '../providers/service/service';
     ImagePicker,
     CargarImgProvider,
     File,
-    ServiceProvider
+    ServiceProvider,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
